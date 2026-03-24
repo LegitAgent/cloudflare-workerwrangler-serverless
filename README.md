@@ -28,6 +28,9 @@ Returns the timezone list from TimeZoneDB with a smaller set of fields.
 3. Set `ALLOWED_ORIGIN` in `wrangler.jsonc`
 4. Run it with `npm run dev`
 
+## Testing
+- For testing, simply run the command `npm test`.
+
 ## Notes
 
 - This is GET-only right now
