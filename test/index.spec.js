@@ -1,3 +1,10 @@
+/**
+ * - https://developers.cloudflare.com/workers/testing/vitest-integration/
+ * - https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/
+ * - https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/
+ * - https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/
+ */
+
 import { afterEach, describe, expect, it, vi } from "vitest";
 import worker from "../src/index.js";
 
