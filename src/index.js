@@ -28,6 +28,21 @@ function json(data, status = 200, origin = "*") {
 }
 
 /**
+ * creates a JSON HTTP response with text as content type instead of json
+ * @param {any} data data to be returned
+ * @param {number} [status=200] status code
+ * @returns {Response} Response containing JSON data and CORS headers
+ */
+function text(data, status = 200) {
+    return new Response(data, {
+        status,
+        headers: {
+            "Content-Type": "text/plain; charset=utf-8"
+        }
+    });
+}
+
+/**
  * Determines the allowed CORS origin from environment variables.
  * @param {Record<string, any>} env environment variable provided by the worker
  * @returns the allowed CORS origin, defaults to * if none
@@ -111,6 +126,10 @@ export default {
         const allowedOrigin = getCorsOrigin(env);
         const isAllowed = isAllowedOrigin(request, env);
         const url = new URL(request.url);
+
+        if (url.pathname === "/robots.txt") {
+            return text("User-agent: *\nDisallow: /\n")
+        }
 
         // permission handshake with browser (CORS preflight)
         if (request.method === "OPTIONS") {
